@@ -87,6 +87,7 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
         titleTextView.setText(getResources().getString(R.string.change_pass));
         subTitleTextView.setText(getResources().getString(R.string.settings));
         subTitleTextView.setPaintFlags(subTitleTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        savePasswordButton.setPaintFlags(savePasswordButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         subTitleTextView.setVisibility(View.VISIBLE);
         backImageView.setVisibility(View.VISIBLE);
         backImageView.setColorFilter(ContextCompat.getColor(getActivity(), android.R.color.white),

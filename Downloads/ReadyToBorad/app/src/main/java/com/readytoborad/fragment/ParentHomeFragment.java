@@ -180,10 +180,11 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
             for (ChildData childData : childArrayList) {
                 Button btn = new Button(mContext);
                 btn.setId(count);
-                btn.setText(childData.getChildName());
+                btn.setText(capitalize(childData.getChildName()));
                 btn.setBackgroundResource(R.drawable.rectangle);
                 btn.setTextColor(mResources.getColor(R.color.white));
                 btn.setMaxLines(2);
+                btn.setAllCaps(false);
                 btn.setEllipsize(TextUtils.TruncateAt.END);
                 btn.setOnClickListener(this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -192,6 +193,9 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
                 count++;
             }
         }
+    }
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 
     public void setSelected(int position) {

@@ -189,6 +189,7 @@ public class SetLocationActivity extends BaseActivity implements View.OnClickLis
         mapFragment.setOnDragListener(SetLocationActivity.this);
         mapFragment.getMapAsync(this);
         setLocationTextView.setText(getResources().getString(R.string.setlocation) + " " + childData.getChildName());
+        buttonSubmit.setPaintFlags(buttonSubmit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     @Override

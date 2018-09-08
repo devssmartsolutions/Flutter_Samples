@@ -26,7 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/backbutton"
             android:text="subtitle"
-            android:textStyle="bold"
+            android:textStyle="normal"
             android:textSize="@dimen/_12sdp"
             android:textColor="@color/white"
             android:visibility="invisible" />
@@ -42,7 +42,7 @@
             android:text="@string/app_name"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_12sdp" />
 
         <TextView
             android:id="@+id/cleartextview"
