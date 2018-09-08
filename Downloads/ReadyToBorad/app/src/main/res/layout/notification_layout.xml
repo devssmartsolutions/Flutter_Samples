@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
+    <include layout="@layout/layout_toolbar" />
 
     <View
         android:id="@+id/line_notification"
@@ -32,6 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/login"
             android:text="@string/clearAll"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:padding="@dimen/_10sdp"
             android:textSize="@dimen/_13sdp" />
@@ -74,4 +71,4 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

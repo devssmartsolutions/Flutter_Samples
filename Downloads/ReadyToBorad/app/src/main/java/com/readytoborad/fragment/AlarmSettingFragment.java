@@ -2,15 +2,20 @@ package com.readytoborad.fragment;
 
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.readytoborad.R;
 import com.readytoborad.adapter.ChildSettingRecyclerAdapter;
@@ -23,11 +28,10 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import dagger.android.support.AndroidSupportInjection;
 
-/**
- * Created by anchal.kumar on 10/27/2017.
- */
+
 
 public class AlarmSettingFragment extends BaseFragment implements ChildSettingRecyclerAdapter.OnEditClick {
     @Inject
@@ -38,6 +42,14 @@ public class AlarmSettingFragment extends BaseFragment implements ChildSettingRe
 
     @BindView(R.id.alarm_setting_list)
     RecyclerView alarmSettingRecyclerView;
+    @BindView(R.id.title_toolbar)
+    TextView titleTextView;
+    @BindView(R.id.subtitle)
+    TextView subTitleTextView;
+    @BindView(R.id.cleartextview)
+    TextView clearTextView;
+    @BindView(R.id.backbutton)
+    ImageView backImageView;
     List<ChildData> childDataArrayList;
 
     @Override
@@ -73,8 +85,19 @@ public class AlarmSettingFragment extends BaseFragment implements ChildSettingRe
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
+        setToolbar();
         new GetChildData().execute();
 
+    }
+
+    private void setToolbar() {
+        titleTextView.setText(getResources().getString(R.string.alarm));
+        subTitleTextView.setText(getResources().getString(R.string.settings));
+        subTitleTextView.setPaintFlags(subTitleTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        subTitleTextView.setVisibility(View.VISIBLE);
+        backImageView.setVisibility(View.VISIBLE);
+        backImageView.setColorFilter(ContextCompat.getColor(getActivity(), android.R.color.white),
+                PorterDuff.Mode.MULTIPLY);
     }
 
     private void setAdapter() {
@@ -90,6 +113,17 @@ public class AlarmSettingFragment extends BaseFragment implements ChildSettingRe
 
     @Override
     public void editPickupPoint(int position) {
+
+    }
+
+    @OnClick({R.id.backbutton, R.id.subtitle})
+    public void backClick(View view) {
+        switch (view.getId()) {
+            case R.id.backbutton:
+            case R.id.subtitle:
+                getActivity().onBackPressed();
+                break;
+        }
 
     }
 }

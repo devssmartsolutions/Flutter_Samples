@@ -141,7 +141,9 @@ public class AppUtils {
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
-                        dialogCallBack.onClickAction();
+                        if(null!=dialogCallBack) {
+                            dialogCallBack.onClickAction();
+                        }
                         sDialog.dismiss();
                     }
                 })

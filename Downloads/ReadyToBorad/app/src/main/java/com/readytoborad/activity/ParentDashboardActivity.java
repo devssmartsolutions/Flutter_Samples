@@ -5,16 +5,12 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import com.readytoborad.R;
 import com.readytoborad.adapter.ViewPagerAdapter;
 import com.readytoborad.fragment.BaseFragment;
 import com.readytoborad.fragment.ParentDashBoardFragment;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 
@@ -23,10 +19,16 @@ public class ParentDashboardActivity extends BaseActivity {
     Resources mResources;
     private ViewPagerAdapter mAdapter;
     ParentDashBoardFragment parentDashBoardFragment;
-    @BindView(R.id.toolbar)
+    /*@BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title_toolbar)
     TextView titleTextView;
+    @BindView(R.id.subtitle)
+    TextView subTitleTextView;
+    @BindView(R.id.cleartextview)
+    TextView clearTextView;
+    @BindView(R.id.backbutton)
+    ImageView backImageView;*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class ParentDashboardActivity extends BaseActivity {
         ButterKnife.bind(this);
         mContext = this;
         mResources = getResources();
-        setToolbar();
+       // setToolbar();
         // new GetChildData().execute();
         initScreen();
 
@@ -52,15 +54,15 @@ public class ParentDashboardActivity extends BaseActivity {
                 .commit();
     }
 
-    private void setToolbar() {
+   /* private void setToolbar() {
         toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.login));
-        titleTextView.setText(getResources().getString(R.string.app_name));
+        setTitle(getResources().getString(R.string.app_name));
         titleTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
+    }*/
 
 
     // Back Button Pressed
@@ -86,15 +88,21 @@ public class ParentDashboardActivity extends BaseActivity {
         }
     }
 
-    public void setToolbarInfo(boolean isBacKButton, String title) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(isBacKButton);
-        getSupportActionBar().setDisplayShowTitleEnabled(isBacKButton);
-        getSupportActionBar().setDisplayShowHomeEnabled(isBacKButton);
+   /* public void setToolbarInfo(boolean isBacKButton, String title) {
         if (isBacKButton) {
-            getSupportActionBar().setTitle(title);
-            toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+            backImageView.setVisibility(View.VISIBLE);
+            subTitleTextView.setText(title);
         }
+        else{
+            backImageView.setVisibility(View.INVISIBLE);
+            subTitleTextView.setVisibility(View.INVISIBLE);
+        }
+
     }
+
+    public void setTitle(String title) {
+        titleTextView.setText(title);
+        titleTextView.invalidate();
+    }*/
 
 }

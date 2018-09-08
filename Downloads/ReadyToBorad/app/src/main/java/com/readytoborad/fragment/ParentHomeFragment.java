@@ -32,7 +32,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.readytoborad.R;
-import com.readytoborad.activity.ParentDashboardActivity;
 import com.readytoborad.customviews.SeekBarHint;
 import com.readytoborad.database.ChildData;
 import com.readytoborad.database.MySharedPreferences;
@@ -56,15 +55,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ParentHomeFragment extends BaseFragment implements View.OnClickListener, OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener {
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.tv_logout)
-    TextView tv_logout;
-    @BindView(R.id.toolbar_title)
-    TextView toolbar_title;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    @BindView(R.id.img_refresh)
-    ImageView img_refresh;
+
     @BindView(R.id.iv_map)
     ImageView img_map;
     @BindView(R.id.btn_left)
@@ -81,6 +74,16 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
     SeekBarHint seekBarHint;
     @BindView(R.id.child_location_textview)
     TextView childLocationText;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.title_toolbar)
+    TextView titleTextView;
+    @BindView(R.id.subtitle)
+    TextView subTitleTextView;
+    @BindView(R.id.cleartextview)
+    TextView clearTextView;
+    @BindView(R.id.backbutton)
+    ImageView backImageView;
     SupportMapFragment mapFragment;
     GoogleMap googleMap;
     private boolean mPermissionDenied = false;
@@ -95,12 +98,13 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
     ArrayList<DriverLocationByChild> driverLocationByChildList;
     ArrayList<String> childIdList;
     SweetAlertDialog pDialog;
-    private boolean isFragmentLoaded = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_parent_home, container, false);
+
         return rootView;
     }
 
@@ -127,35 +131,23 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && !isFragmentLoaded) {
-            // Load your data here or do network operations here
-            isFragmentLoaded = true;
-        }
-    }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
-        if (isFragmentLoaded)
-            ((ParentDashboardActivity) getActivity()).setToolbarInfo(false, getResources().getString(R.string.app_name));
+        titleTextView.setText(getResources().getString(R.string.app_name));
+        new GetChildData().execute();
         init();
         mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_parent_bus_home);
         mapFragment.getMapAsync(ParentHomeFragment.this);
         mapFragment.getView().setVisibility(View.GONE);
-        mToolbar.setVisibility(View.GONE);
+
         seekBarHint.getProgressDrawable().setColorFilter(Color.parseColor("#00ad80"), PorterDuff.Mode.SRC_IN);
         seekBarHint.getThumb().setColorFilter(Color.parseColor("#00ad80"), PorterDuff.Mode.SRC_IN);
-        tv_logout.setVisibility(View.GONE);
-        toolbar_title.setText(mResources.getString(R.string.app_name));
-        mToolbar.setBackgroundColor(mResources.getColor(R.color.login));
-        tv_logout.setTextColor(Color.WHITE);
-        img_refresh.setVisibility(View.GONE);
-        img_map.setOnClickListener(this);
+        toolbar.setBackgroundColor(mResources.getColor(R.color.login));
+
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int dpi = metrics.densityDpi;
 
@@ -169,19 +161,14 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
         }
 
 
-        new GetChildData().execute();
-
-
     }
 
     public void init() {
         mContext = getActivity();
         mResources = getResources();
-
         driverLocationByChildList = new ArrayList<>();
         childIdList = new ArrayList<>();
         pDialog = AppUtils.getDialog(getActivity());
-
         which_frag = parent_route;
     }
 
@@ -308,24 +295,6 @@ public class ParentHomeFragment extends BaseFragment implements View.OnClickList
         }
     }
 
-   /* public void setchilldLocation() {
-        childArrayList = ((ParentDashboardActivity) getActivity()).getchildData();
-        if (childArrayList != null && childArrayList.size() > 0) {
-
-            for (ChildData childData : childArrayList) {
-                try {
-                    MarkerOptions mp = new MarkerOptions();
-                    LatLng latLng = new LatLng(Double.parseDouble(childData.getLatitude()), Double.parseDouble(childData.getLongitude()));
-                    mp.position(latLng);
-                    mp.title(childData.getChildName());
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5.0f));
-                    googleMap.addMarker(mp);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }*/
 
 
     @Override

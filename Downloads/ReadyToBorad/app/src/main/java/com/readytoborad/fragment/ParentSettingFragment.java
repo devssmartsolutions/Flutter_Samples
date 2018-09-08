@@ -12,9 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.readytoborad.R;
-import com.readytoborad.activity.ParentDashboardActivity;
 import com.readytoborad.activity.setting.SettingModel;
 import com.readytoborad.adapter.SettingRecyclerAdapter;
 
@@ -35,8 +36,15 @@ public class ParentSettingFragment extends BaseFragment implements SettingRecycl
     Context mContext;
     @BindView(R.id.setting_recyclerview)
     RecyclerView setting_recycler;
+    @BindView(R.id.title_toolbar)
+    TextView titleTextView;
+    @BindView(R.id.subtitle)
+    TextView subTitleTextView;
+    @BindView(R.id.cleartextview)
+    TextView clearTextView;
+    @BindView(R.id.backbutton)
+    ImageView backImageView;
     List<SettingModel> settingModelList;
-    private boolean isFragmentLoaded = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,21 +63,13 @@ public class ParentSettingFragment extends BaseFragment implements SettingRecycl
     public ParentSettingFragment() {
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && !isFragmentLoaded) {
-            // Load your data here or do network operations here
-            isFragmentLoaded = true;
-        }
-    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
-        if(isFragmentLoaded)
-        ((ParentDashboardActivity) getActivity()).setToolbarInfo(true, getResources().getString(R.string.settings));
+        titleTextView.setText(getResources().getString(R.string.settings));
         settingModelList = new ArrayList<>();
         settingModelList.add(getModelSetting(getResources().getString(R.string.sound), R.drawable.sound, true, false));
         settingModelList.add(getModelSetting(getResources().getString(R.string.alarm_setting), R.drawable.alarm, false, false));

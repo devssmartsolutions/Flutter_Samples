@@ -212,7 +212,7 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/layout_toolbar" />
 
         <View
             android:id="@+id/line"

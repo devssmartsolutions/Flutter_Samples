@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
@@ -133,6 +134,10 @@ public class SetLocationActivity extends BaseActivity implements View.OnClickLis
     Toolbar toolbar;
     @BindView(R.id.title_toolbar)
     TextView titleToolbar;
+    @BindView(R.id.subtitle)
+    TextView subTitle;
+    @BindView(R.id.backbutton)
+    ImageView backButton;
     @BindView(R.id.setlocationfor)
     TextView setLocationTextView;
 
@@ -170,16 +175,11 @@ public class SetLocationActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void setToolbar() {
-        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.login));
         titleToolbar.setText(getResources().getString(R.string.set_pickup_point));
-        titleToolbar.setTextColor(ContextCompat.getColor(this, R.color.white));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(getResources().getString(R.string.pickup_points));
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        subTitle.setText(getResources().getString(R.string.pickup_points));
+        subTitle.setPaintFlags(subTitle.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        subTitle.setVisibility(View.VISIBLE);
+        backButton.setVisibility(View.VISIBLE);
 
     }
 
@@ -290,7 +290,7 @@ public class SetLocationActivity extends BaseActivity implements View.OnClickLis
 
     }
 
-    @OnClick({R.id.buttonSubmit, R.id.edit_icon})
+    @OnClick({R.id.buttonSubmit, R.id.edit_icon, R.id.backbutton, R.id.subtitle})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonSubmit:
@@ -298,6 +298,12 @@ public class SetLocationActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.edit_icon:
                 autoCompleteTextView.setText("");
+                break;
+            case R.id.backbutton:
+            case R.id.subtitle:
+                finish();
+                break;
+            default:
                 break;
         }
     }

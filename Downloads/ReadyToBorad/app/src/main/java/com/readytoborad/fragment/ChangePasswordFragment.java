@@ -1,14 +1,19 @@
 package com.readytoborad.fragment;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.readytoborad.R;
 import com.readytoborad.database.MySharedPreferences;
@@ -37,6 +42,14 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
     EditText confirmPasswordEditText;
     @BindView(R.id.button_save)
     Button savePasswordButton;
+    @BindView(R.id.title_toolbar)
+    TextView titleTextView;
+    @BindView(R.id.subtitle)
+    TextView subTitleTextView;
+    @BindView(R.id.cleartextview)
+    TextView clearTextView;
+    @BindView(R.id.backbutton)
+    ImageView backImageView;
     @Inject
     ApiInterface apiInterface;
     @Inject
@@ -60,6 +73,7 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
+        setToolbar();
         sweetAlertDialog = AppUtils.getDialog(getActivity());
     }
 
@@ -68,11 +82,18 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
         if (validateData()) {
             changePassword();
         }
-
+    }
+    private void setToolbar() {
+        titleTextView.setText(getResources().getString(R.string.change_pass));
+        subTitleTextView.setText(getResources().getString(R.string.settings));
+        subTitleTextView.setPaintFlags(subTitleTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        subTitleTextView.setVisibility(View.VISIBLE);
+        backImageView.setVisibility(View.VISIBLE);
+        backImageView.setColorFilter(ContextCompat.getColor(getActivity(), android.R.color.white),
+                PorterDuff.Mode.MULTIPLY);
     }
 
     private boolean validateData() {
-
         if (oldPasswordEditText.getText().toString().trim().isEmpty()) {
             oldPasswordEditText.setError(getResources().getString(R.string.enter_old));
             //input_old_pass.startAnimation(shakeAnimation);
@@ -97,7 +118,7 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
     private void changePassword() {
         sweetAlertDialog.show();
 
-        Call<CommonResponse> loginResponse = apiInterface.changePassword(oldPasswordEditText.getText().toString().trim(), newPasswordEditText.getText().toString().trim(), mySharedPreferences.getStringData(MySharedPreferences.PREFS_SESSION_TOKEN));
+        Call<CommonResponse> loginResponse = apiInterface.changePassword(mySharedPreferences.getStringData(MySharedPreferences.PREFS_SESSION_TOKEN), oldPasswordEditText.getText().toString().trim(), newPasswordEditText.getText().toString().trim());
         loginResponse.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
@@ -129,5 +150,16 @@ public class ChangePasswordFragment extends BaseFragment implements DialogCallBa
     @Override
     public void onClickAction() {
         //
+        getActivity().onBackPressed();
+    }
+    @OnClick({R.id.backbutton, R.id.subtitle})
+    public void backClick(View view) {
+        switch (view.getId()) {
+            case R.id.backbutton:
+            case R.id.subtitle:
+                getActivity().onBackPressed();
+                break;
+        }
+
     }
 }

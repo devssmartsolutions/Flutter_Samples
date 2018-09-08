@@ -28,9 +28,9 @@ public class App extends Application implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
         // setupGraph();
-      //  FontsOverride.setDefaultFont(this, "DEFAULT", "gillsans.ttf");
-       // FontsOverride.setDefaultFont(this, "MONOSPACE", "gillsans.ttf");
-      //  FontsOverride.setDefaultFont(this, "SERIF", "gillsans.ttf");
+        FontsOverride.setDefaultFont(this, "DEFAULT", "gillsans.ttf");
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "gillsans.ttf");
+        FontsOverride.setDefaultFont(this, "SERIF", "gillsans.ttf");
         FontsOverride.setDefaultFont(this, "SANS_SERIF", "gillsans.ttf");
 
         DaggerAppComponent.builder().application(this)
