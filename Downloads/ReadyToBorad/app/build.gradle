@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.readytoborad"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+   /* dexOptions {
+        javaMaxHeapSize "4g"
+    }*/
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.intuit.sdp:sdp-android:1.0.4'
+    implementation 'com.android.support:design:25.3.1'
+    implementation 'com.github.satyan:sugar:1.4'
+    implementation 'com.android.support:cardview-v7:27.0.1'
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation 'com.android.support:appcompat-v7:27.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    implementation 'com.android.support:recyclerview-v7:27.0.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+    implementation 'com.squareup:otto:1.3.8'
+
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
+    implementation 'com.google.android.gms:play-services-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.gjiazhe:MultiChoicesCircleButton:1.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
+    implementation 'com.google.dagger:dagger:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.10.0'
+    implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.9.0'
+    implementation 'android.arch.persistence.room:runtime:1.1.0'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'javax.json:javax.json-api:1.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.2.1'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.1.0'
+    implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+    testImplementation 'junit:junit:4.12'
+}
+apply plugin: 'com.google.gms.google-services'

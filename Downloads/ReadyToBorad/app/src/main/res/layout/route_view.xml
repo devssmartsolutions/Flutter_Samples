@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_18sdp">
+
+    <RelativeLayout
+        android:id="@+id/track_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_layout"
+        android:layout_marginTop="@dimen/_8sdp">
+
+        <app.android.schoolbell.customviews.DistanceView
+            android:id="@+id/distanceView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/source"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginRight="@dimen/_14sdp" />
+
+        <ImageView
+            android:id="@+id/source"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:src="@drawable/home" />
+
+
+        <!--   <ProgressBar
+               android:id="@+id/distanceProgress"
+               style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignBottom="@+id/source"
+               android:layout_toLeftOf="@+id/destination"
+               android:layout_toRightOf="@id/source"
+               android:visibility="visible" />-->
+        <app.android.schoolbell.customviews.DrawView
+            android:id="@+id/viewDraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/source"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_toLeftOf="@+id/destination"
+            android:layout_toRightOf="@id/source" />
+
+        <!--   <SeekBar
+               android:id="@+id/seek_progress"
+               android:layout_width="match_parent"
+               android:progressDrawable="@drawable/seek_progress"
+               android:layout_height="wrap_content" />-->
+
+        <RelativeLayout
+            android:id="@+id/trackview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/text_remain_time"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/min_left_image"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_3sdp"
+                android:paddingRight="@dimen/_3sdp"
+                android:text="30"
+                android:textSize="@dimen/_7sdp" />
+
+            <ImageView
+                android:id="@+id/bus_icon"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/bus" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/destination"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:src="@drawable/school" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/text_track_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_layout"
+        android:layout_marginTop="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/home"
+            android:text="Home" />
+
+
+        <TextView
+            android:id="@+id/text_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/school"
+            android:text="School" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/location_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_70sdp">
+
+        <ImageView
+            android:id="@+id/currentlocation"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/location" />
+
+        <TextView
+            android:id="@+id/textCurrentLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentlocation"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_8sdp"
+            android:text="current Location"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_12sdp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentlocation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_8sdp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textReaminingTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_8sdp"
+        android:text="Remaining Time"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/_12sdp" />
+
+</LinearLayout>

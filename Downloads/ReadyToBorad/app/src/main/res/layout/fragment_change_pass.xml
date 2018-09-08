@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/input_old_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:background="@drawable/rectangle_shape"
+        android:hint="@string/old_pass"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="@dimen/_12sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintcolor" />
+
+    <EditText
+        android:id="@+id/input_new_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_old_pass"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/rectangle_shape"
+        android:hint="@string/new_pass"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="@dimen/_12sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintcolor" />
+
+    <EditText
+        android:id="@+id/input_confirm_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_new_pass"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/rectangle_shape"
+        android:hint="@string/confirm_pass"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="@dimen/_12sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintcolor" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_below="@+id/input_confirm_pass"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/login_button_shape"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
+
+    <View
+        android:id="@+id/line_notification"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/_transparent">
+
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/notification_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line_notification">
+
+        <Button
+            android:id="@+id/clear_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login"
+            android:text="@string/clearAll"
+            android:textColor="@color/white"
+            android:padding="@dimen/_10sdp"
+            android:textSize="@dimen/_13sdp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/notification_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/clear_Button"
+            android:layout_marginTop="@dimen/_3sdp">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/alert_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/transparent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/alert_image"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_centerInParent="true"
+            android:src="@android:drawable/ic_dialog_alert"></ImageView>
+
+        <TextView
+            android:id="@+id/text_nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alert_image"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="@string/no_notification"
+            android:textColor="@color/black_trans"
+            android:textSize="@dimen/_15sdp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

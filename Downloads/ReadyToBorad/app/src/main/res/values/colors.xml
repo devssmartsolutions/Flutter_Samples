@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorGreen">#00FF00</color>
+    <color name="darkGreen">#FF1D511D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light">#FFF7F7F7</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="light_transparent">#00000000</color>
+    <color name="black_trans">#FF000000</color>
+    <color name="graphite">#383428</color>
+    <color name="_transparent">#73000000</color>
+    <color name="transparent">#33000000</color>
+    <color name="login">#00ad80</color>
+    <color name="tab_selected">#4d00ad80</color>
+    <color name="green">#67c100</color>
+    <color name="hintcolor">#908f89</color>
+    <color name="dark">#FF4081</color>
+    <color name="dashcolor">#d6d6d6</color>
+    <color name="black">#000000</color>
+    <color name="grey">#acacac</color>
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "93605047711",
+    "firebase_url": "https://readytoboard-c5862.firebaseio.com",
+    "project_id": "readytoboard-c5862",
+    "storage_bucket": "readytoboard-c5862.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93605047711:android:5cb82547766fbbeb",
+        "android_client_info": {
+          "package_name": "com.readytoborad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93605047711-5hm2dngatbk72k2bthkjs309ks0vo8d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2t6A9p112F63BMgA2utsWPrb4rMutpBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

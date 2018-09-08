@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_transparent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/dashcolor"></View>
+
+    <TextView
+        android:id="@+id/tv_alert_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:gravity="center"
+        android:padding="@dimen/_4sdp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:text=""
+        android:textAllCaps="false"
+        android:textColor="@color/black_trans"
+        android:textSize="@dimen/_18sdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/line"
+        android:id="@+id/ll_main"
+        >
+
+        <Spinner
+            android:id="@+id/spinner_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:visibility="gone"></Spinner>
+
+
+
+        <include
+            android:id="@+id/commom_layout"
+            layout="@layout/route_map_common_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"></include>
+
+        <FrameLayout
+            android:id="@+id/viewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/commom_layout"
+           ></FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_start_dailog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/_transparent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/start_trip"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/start_trip" />
+
+            <!-- <TextView
+                 android:id="@+id/start_trip_button"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:background="@drawable/circle_bg"
+                 android:gravity="center"
+                 android:text="@string/start_trip"
+                 android:textAllCaps="true"
+                 android:textColor="@color/white"
+                 android:textSize="@dimen/_30sdp" />
+
+             <ImageView
+                 android:id="@+id/arrow_start"
+                 android:layout_width="@dimen/_90sdp"
+                 android:layout_height="@dimen/_10sdp"
+                 android:layout_alignBottom="@+id/start_trip_button"
+                 android:layout_centerHorizontal="true"
+                 android:layout_marginBottom="@dimen/_20sdp" />-->
+
+        </RelativeLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_end_trip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/_30sdp"
+        android:gravity="center"
+        android:background="@drawable/graphite_bg_round_border"
+        android:paddingLeft="@dimen/_30sdp"
+        android:paddingRight="@dimen/_30sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:text="@string/end_trip"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp" />
+
+
+</RelativeLayout>
